@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MinhaAPICore.Model;
 
@@ -21,9 +19,10 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores
+    
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Fornecedores.ToListAsync());
+            return Ok(await _context.Fornecedores.ToListAsync());
         }
 
         // GET: Fornecedores/Details/5
