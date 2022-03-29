@@ -27,6 +27,8 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores/Details/5
+        [HttpGet(template:"detalhes")]
+        
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -45,6 +47,7 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores/Create
+        [HttpGet(template: "criar")]
         public IActionResult Create()
         {
             return View();
@@ -68,6 +71,7 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores/Edit/5
+        [HttpGet(template: "edit")]
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -119,6 +123,7 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores/Delete/5
+        [HttpGet(template: "delete")]
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
