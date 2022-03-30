@@ -55,7 +55,7 @@ namespace MinhaAPICore.Controllers
         // POST: Fornecedores/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
         {
@@ -89,7 +89,7 @@ namespace MinhaAPICore.Controllers
         // POST: Fornecedores/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
         {
@@ -143,6 +143,7 @@ namespace MinhaAPICore.Controllers
         // POST: Fornecedores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [HttpPost("apagar")]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var fornecedor = await _context.Fornecedores.FindAsync(id);
