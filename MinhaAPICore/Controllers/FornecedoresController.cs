@@ -51,9 +51,7 @@ namespace MinhaAPICore.Controllers
             return Ok();
         }
 
-        // POST: Fornecedores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
@@ -117,6 +115,7 @@ namespace MinhaAPICore.Controllers
 
             return BadRequest("Há erros nos dados passados");
         }
+
 
         // GET: Fornecedores/Delete/5
         [HttpGet(template: "delete")]
