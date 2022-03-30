@@ -19,15 +19,15 @@ namespace MinhaAPICore.Controllers
         }
 
         // GET: Fornecedores
-    
+
         public async Task<IActionResult> Index()
         {
             return Ok(await _context.Fornecedores.ToListAsync());
         }
 
         // GET: Fornecedores/Details/5
-        [HttpGet(template:"detalhes")]
-        
+        [HttpGet(template: "detalhes")]
+
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -52,9 +52,7 @@ namespace MinhaAPICore.Controllers
             return View();
         }
 
-        // POST: Fornecedores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost("create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
@@ -86,11 +84,8 @@ namespace MinhaAPICore.Controllers
             return View(fornecedor);
         }
 
-        // POST: Fornecedores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost("edit")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
         {
             if (id != fornecedor.Id)
@@ -116,10 +111,11 @@ namespace MinhaAPICore.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Ok(fornecedor);
             }
-            return View(fornecedor);
+            return BadRequest();
         }
+
 
         // GET: Fornecedores/Delete/5
         [HttpGet(template: "delete")]
