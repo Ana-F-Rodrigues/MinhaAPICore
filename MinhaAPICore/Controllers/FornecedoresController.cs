@@ -18,16 +18,15 @@ namespace MinhaAPICore.Controllers
             _context = context;
         }
 
-        // GET: Fornecedores
-    
+        // GET: Fornecedores    
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return Ok(await _context.Fornecedores.ToListAsync());
         }
 
         // GET: Fornecedores/Details/5
-        [HttpGet(template:"detalhes")]
-        
+        [HttpGet(template:"detalhes")]        
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -49,7 +48,7 @@ namespace MinhaAPICore.Controllers
         [HttpGet(template: "criar")]
         public IActionResult Create()
         {
-            return View();
+            return Ok();
         }
 
         // POST: Fornecedores/Create
@@ -87,16 +86,13 @@ namespace MinhaAPICore.Controllers
         }
 
         // POST: Fornecedores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Documento,TipoFornecedor,Ativo")] Fornecedor fornecedor)
+        [HttpPost]
+        public async Task<IActionResult> Edit([FromBody]Fornecedor fornecedor)
         {
-            if (id != fornecedor.Id)
-            {
-                return NotFound();
-            }
+            //if (id != fornecedor.Id)
+            //{
+            //    return NotFound();
+            //}
 
             if (ModelState.IsValid)
             {
@@ -116,9 +112,10 @@ namespace MinhaAPICore.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Ok(fornecedor);
             }
-            return View(fornecedor);
+
+            return BadRequest("Há erros nos dados passados");
         }
 
         // GET: Fornecedores/Delete/5
@@ -141,7 +138,7 @@ namespace MinhaAPICore.Controllers
         }
 
         // POST: Fornecedores/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         [HttpPost("apagar")]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

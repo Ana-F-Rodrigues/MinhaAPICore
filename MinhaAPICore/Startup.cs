@@ -29,7 +29,9 @@ namespace MinhaAPICore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApiDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString(name: "DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString(name: "DefaultConnection"))
+                //options.UseInMemoryDatabase("teste")
+            );
 
             services.AddControllersWithViews();
 
