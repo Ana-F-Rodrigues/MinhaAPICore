@@ -5,8 +5,7 @@ namespace MinhaAPICore.Model
 {
     public class Fornecedor
     {
-        [Key]
-
+      [Key]
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatorio")]
