@@ -23,3 +23,32 @@ Global
 		SolutionGuid = {33E9587E-9EF5-435C-AFCE-AD8208C7A2DA}
 	EndGlobalSection
 EndGlobal
+
+ public bool Diagnostico()
+        {
+            short verdadeiras = 0;
+
+            if (Pergunta_1)
+                verdadeiras++;
+            if (Resposta_2)
+                verdadeiras++;
+            if (Resposta_3)
+                verdadeiras++;
+            if (Resposta_4)
+                verdadeiras++;
+            if (Resposta_5)
+                verdadeiras++;
+            if (Resposta_6)
+                verdadeiras++;
+            if (Resposta_7)
+                verdadeiras++;
+            if (Resposta_8)
+                verdadeiras++;
+            if (Resposta_9)
+                verdadeiras++;
+            if (Resposta_10)
+                verdadeiras++;
+
+            return verdadeiras >= 7 ? true : false;
+        }
+
